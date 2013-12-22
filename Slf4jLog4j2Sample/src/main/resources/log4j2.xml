@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+      </PatternLayout>
+    </Console>
+
+    <RollingFile name="RollingFile" fileName="slf4j_log4j2_sample_log.log" filePattern="slf4j_log4j2_sample_log_%d{yyyy-MM-dd}.log.gz">
+      <PatternLayout>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+      </PatternLayout>
+      <JSONLayout complete="true" charset="UTF-8" />
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+      </Policies>
+    </RollingFile>
+  </appenders>
+
+  <loggers>
+    <root level="trace">
+      <appender-ref ref="Console" />
+      <appender-ref ref="RollingFile" />
+    </root>
+
+    <logger name="" level="trace">
+      <appender-ref ref="Console" />
+    </logger>
+  </loggers>
+</configuration>

@@ -1,0 +1,54 @@
+// Usage
+//
+// For Eclipse
+//
+// First use
+// $gradle eclipse
+//
+// Fix classpath
+// $gradle cleanEclipseClasspath
+//
+// For IDEA
+// $gradle idea
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url "http://repository.jboss.org/nexus/content/groups/public-jboss" }
+    maven { url "http://repository.apache.org/content/groups/public" }
+    maven { url "http://repository.apache.org/content/groups/public" }
+    maven { url "http://repository.springsource.com/maven/bundles/release" }
+    maven { url "http://repository.codehaus.org" }
+    maven { url "http://download.java.net/maven/2" }
+    maven { url "http://download.java.net/maven/glassfish" }
+    maven { url "http://maven.seasar.org/maven2" }
+    maven { url "http://m2repo.spockframework.org/snapshots" }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+            }
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test/java"]
+            }
+        resources {
+            srcDirs = ["src/test/resources"]
+             }
+    }
+}
+
+dependencies {
+    compile ('org.apache.logging.log4j:log4j-core:2.0-beta9') {transitive = false}
+    compile ('org.apache.logging.log4j:log4j-api:2.0-beta9') {transitive = false}
+}
